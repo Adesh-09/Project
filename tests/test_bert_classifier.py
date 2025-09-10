@@ -1,18 +1,17 @@
 import unittest
-import sys
 import os
 import tempfile
 import shutil
-import pandas as pd
 from unittest.mock import patch, MagicMock
 
-# Add src directory to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+try:  # pragma: no cover - dependency may be missing
+    import pandas as pd
+except Exception:  # pragma: no cover
+    pd = None
 
-try:
-    from bert_classifier import BERTCustomerQueryClassifier
-except ImportError:
-    # Skip tests if BERT classifier is not available
+try:  # pragma: no cover
+    from src.bert_classifier import BERTCustomerQueryClassifier
+except Exception:  # pragma: no cover
     BERTCustomerQueryClassifier = None
 
 class TestBERTCustomerQueryClassifier(unittest.TestCase):
@@ -20,8 +19,8 @@ class TestBERTCustomerQueryClassifier(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures"""
-        if BERTCustomerQueryClassifier is None:
-            self.skipTest("BERT classifier not available")
+        if BERTCustomerQueryClassifier is None or pd is None:
+            self.skipTest("Required dependencies not available")
         
         self.classifier = BERTCustomerQueryClassifier()
         self.temp_dir = tempfile.mkdtemp()
