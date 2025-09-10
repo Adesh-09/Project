@@ -4,6 +4,17 @@
 
 This repository contains three comprehensive data science and machine learning projects that demonstrate advanced capabilities in predictive modeling, system monitoring, and natural language processing. Each project includes complete implementations with production-ready code, comprehensive documentation, testing frameworks, and deployment configurations.
 
+## Repository Structure
+
+```
+src/
+  models/
+  routes/
+tests/
+Dockerfile
+docker-compose.yml
+```
+
 ### Projects Overview
 
 1. **Customer Churn Prediction Model** - Advanced ML pipeline with PySpark ETL, ensemble methods, and MLflow integration

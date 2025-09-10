@@ -5,8 +5,8 @@ import json
 import threading
 import time
 from datetime import datetime, timedelta
-from anomaly_detection import SparkAnomalyDetector
-from proactive_mitigation import ProactiveMitigationEngine
+from .anomaly_detection import SparkAnomalyDetector
+from .proactive_mitigation import ProactiveMitigationEngine
 import redis
 import os
 

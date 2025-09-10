@@ -1,18 +1,13 @@
 from flask import Blueprint, request, jsonify
 from flask_cors import cross_origin
-import sys
-import os
 import logging
+import os
 from datetime import datetime
 import json
 
-# Add the parent directory to the path to import our classifier
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'src'))
-
 try:
-    from bert_classifier import BERTCustomerQueryClassifier
-except ImportError:
-    # Fallback if import fails
+    from ..bert_classifier import BERTCustomerQueryClassifier
+except Exception:  # pragma: no cover - fallback for environments without model
     BERTCustomerQueryClassifier = None
 
 # Configure logging
